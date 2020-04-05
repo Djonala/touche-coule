@@ -1,0 +1,78 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid4 div{
+    font-size:1.2vw;
+    flex: 0 9.09%;
+    position: relative;
+
+    border: 1px solid #c3c3c3;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.grid6 div{
+    font-size:2vw;
+    flex: 0 9.09%;
+    position: relative;
+
+    border: 1px solid #c3c3c3;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid div.g2d-d {
+    border-left: 1px solid rgb(102, 0, 255);
+    border-top: 1px solid rgb(102, 0, 255);
+    border-bottom: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+.grid div.g2d-m {
+    border-top: 1px solid rgb(102, 0, 255);
+    border-bottom: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+.grid div.g2d-f {
+    border-right: 1px solid rgb(102, 0, 255);
+    border-top: 1px solid rgb(102, 0, 255);
+    border-bottom: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+
+.grid div.t2b-d {
+    border-left: 1px solid rgb(102, 0, 255);
+    border-top: 1px solid rgb(102, 0, 255);
+    border-right: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+.grid div.t2b-m {
+    border-left: 1px solid rgb(102, 0, 255);
+    border-right: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+.grid div.t2b-f {
+    border-right: 1px solid rgb(102, 0, 255);
+    border-left: 1px solid rgb(102, 0, 255);
+    border-bottom: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}
+.grid div.touche {
+    border: 1px solid rgb(102, 0, 255);
+    background-color: rgba(102, 0, 255, 0.3);
+}

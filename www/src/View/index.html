@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../../assets/css/materialize.min.css"  media="screen,projection"/>
+
+        <link type="text/css" rel="stylesheet" href="../../assets/css/app.css"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper indigo darken-4">
+                <a href="/" class="brand-logo">Touché, Coulé</a>
+            </div>
+        </nav>
+        <div class="container">
+            <!-- Page Content goes here -->
+            <div class="row">
+                <div class="col s12">
+                    <h2>Faire un Touché-coulé</h2>
+                    <ol>
+                        <li>Page de choix des speudo : enregstrer dans la BDD d'une partie + stocker l'id de la partie dans la session</li>
+                        <li>Page de placement des bâteaux : L'utilisateur ne fait pas d'erreur de saisie. Mettre à jour la partie. Exemple de coordonnée : C2, C7</li>
+                        <li>Page du joueur1 : Le joueur saisie les coordonnées d'une case et envoi (Ex. B5).
+                            <ul>
+                                <li>Si le coup est dans l'eau alors mettre le symbole &#128167; (en html : &amp;#128167;)</li>
+                                <li>Si le coup touche un bateau alors mettre le symbole &#128165; (en html : &amp;#128165;)</li>
+                                <li>Si le coup coule le dernier bateau alors mettre la page end.html, étape 5.</li>
+                                <li>Dans tous les autres cas, c'est au joueur adverse de jouer.</li>
+                                <li>Enregistrer tous les coups dans la BDD.</li>
+                            </ul>
+                        </li>
+                        <li>Page du joueur2 : idem</li>
+                        <li>Page de fin : Indique la fin de la partie</li>
+
+                    </ol>
+                    <a href="pseudo.html">Démo</a>
+                </div>
+            </div>
+        </div>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../../assets/js/materialize.min.js"></script>
+    </body>
+</html>

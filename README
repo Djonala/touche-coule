@@ -1,0 +1,17 @@
+Faire un Touché-coulé
+---------------------
+
+Le sujet est dans le répertoire.
+
+Il contient les pages à dynamiser.
+
+Le site est à realiser dans le répertoire `www`.
+
+Pas besoin de configuration particulière pour accèder au site.
+Exécutez dans ce répertoire `www` la commande suivantes :
+
+php -S 127.0.0.1:9080
+
+Puis saisissez, dans votre navigateur :
+http://127.0.0.1:9080
+
