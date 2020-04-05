@@ -17,7 +17,11 @@ class User
     public function __construct($pseudo)
     {
         $this->pseudo = $pseudo;
-        $this->gameboard = new Gameboard();
+        for ($i=0;$i<10;$i++) {
+            for ($j=0;$j<10; $j++) {
+                $this->gameboard[$i][$j] = '-';
+            }
+        }
 
     }
 
@@ -39,16 +43,17 @@ class User
     }/**
      * @param string $pseudo
      */
-    public function setPseudo(string $pseudo): void
+    public function setPseudo($pseudo): void
     {
         $this->pseudo = $pseudo;
     }/**
      * @return Gameboard
      */
-    public function getGameboard(): Gameboard
+    public function getGameboard()
     {
         return $this->gameboard;
-    }/**
+    }
+    /**
      * @param Gameboard $gameboard
      */
     public function setGameboard(Gameboard $gameboard): void

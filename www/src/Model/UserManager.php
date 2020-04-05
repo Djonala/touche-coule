@@ -42,7 +42,7 @@ class UserManager
         $this->connexion->connect();
         $result = pg_query_params(
             $this->connexion->getConnexion(),
-            "INSERT INTO user (pseudo, gameboard) VALUES ($1, $2)
+            "INSERT INTO user (pseudo, gameboard) VALUES ($1, serialize($2))
             RETURNING *
             ;",
             [$user->getPseudo(), $user->getGameboard()]
