@@ -22,9 +22,7 @@ class ConnexionBDD
 
     public function connect() {
         if ($this->connexion === null) {
-            echo("ouvou2");
-            $this->connexion = pg_connect('host=127.0.0.1 port=5432 dbname=touche-coule user=superadmin password=test');
-            echo("ouvou3");
+            $this->connexion = pg_connect('host=127.0.0.1 port=5432 dbname=touche-coule user=johanna password=test');
         }
         return $this->connexion;
     }
