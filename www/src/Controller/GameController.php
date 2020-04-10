@@ -30,14 +30,26 @@ class GameController extends AbstractController
 
         //on instancie le service GameViewService
         $gameService = new GameViewService();
-        $plateauJ1 = $gameService->generateBoardgame($player1,$player2);
-        var_dump($player2->getShoots());
+        $plateauJ1 = $gameService->generateBoardgame($player1,$player2); // pour affichage complet du plateau
+        $plateauJ2 = $gameService->generateBoardgame($player2,$player1); //pour affichage des tirs et à l'eau
 
+        // si une requete post est lancée
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            //on ajoute les tirs à la liste du joueur en cours et on le met à jour en DB
             $player1->setShoots($_POST['tir']);
             $player1 = $joueurManager->update($player1);
 
-            $this->redirect302('/gameJ2');
+            // on réinitialise avec ces données le plateau du joueur adverse
+            $plateauAdverse = $gameService->generateBoardgame($player2,$player1);
+
+            //Si le $plateau adverse est vide, c'est la fin, sinon, on continue
+            if($gameService->isOver($plateauAdverse)){
+                $this->redirect302('/end');
+            } else {
+                $this->redirect302('/gameJ2');
+            }
+
+
         }
         require(__DIR__ . '/../View/joueur1.php');
     }
@@ -57,17 +69,27 @@ class GameController extends AbstractController
         $player1 = $joueurManager->findPlayerById($game->getIdPlayer1());
         $player2 = $joueurManager->findPlayerById($game->getIdPlayer2());
 
-        //on instancie le service GameViewService
+        //on instancie le service GameViewService et on genère un plateau pour le player en cours
         $gameService = new GameViewService();
-        $plateauJ2 = $gameService->generateBoardgame($player2,$player1);
+        $plateauJ2 = $gameService->generateBoardgame($player2,$player1);  // pour affichage complet du plateau
+        $plateauJ1 = $gameService->generateBoardgame($player1,$player2);//pour affichage des tirs et à l'eau
 
-
+        // si une requete post est lancée
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            //on ajoute les tirs à la liste du joueur en cours et on le met à jour en DB
             $player2->setShoots($_POST['tir']);
             $player2 = $joueurManager->update($player2);
 
+            // on réinitialise avec ces données le plateau du joueur adverse
+            $plateauAdverse = $gameService->generateBoardgame($player1,$player2);
 
-            $this->redirect302('/gameJ1');
+            //Si le $plateau adverse est vide, c'est la fin, sinon, on continue
+            if($gameService->isOver($plateauAdverse)){
+                $this->redirect302('/end');
+            } else {
+                $this->redirect302('/gameJ1');
+            }
         }
 
         require(__DIR__ . '/../View/joueur2.php');

@@ -94,25 +94,41 @@ class GameViewService
         if(isset($shoots)) {
             //on boucle sur tous les tirs de l'adversaire
             foreach ($shoots as $shoot) {
-                //Recupère la lettre sous forme de chiffre ou on recupère le chiffre
-                $x1 = $this->alphabet[substr($shoot, 0, 1)];
-                $y1 = (int)substr($shoot, 1) - 1; // je retire 1 car mon tableau débute à 0
+                if($shoot!=null){
+                    //Recupère la lettre sous forme de chiffre ou on recupère le chiffre
+                    $x1 = $this->alphabet[substr($shoot, 0, 1)];
+                    $y1 = (int)substr($shoot, 1) - 1; // je retire 1 car mon tableau débute à 0
 
-                //Si la valeur est différente de 0 (donc s'il y a un bateau)
-                if ($tab[$y1][$x1] != 0 && $tab[$y1][$x1] != 13 && $tab[$y1][$x1] % 2 == 1) {
-                    $tab[$y1][$x1]++;
-                } elseif ($tab[$y1][$x1] == 0) {
-                    $tab[$y1][$x1] = 13;
+                    //Si la valeur est différente de 0 (donc s'il y a un bateau)
+                    if ($tab[$y1][$x1] != 0 && $tab[$y1][$x1] != 13 && $tab[$y1][$x1] % 2 == 1) {
+                        $tab[$y1][$x1]++;
+                        $playerManager = new PlayerManager(ConnexionBDD::getInstance());
+                        $playerManager->update($player);
+                    } elseif ($tab[$y1][$x1] == 0) {
+                        $tab[$y1][$x1] = 13;
+                    }
                 }
             }
         }
-
         return $tab;
 
     }
 
-    private function isOver(){
-
+    public function isOver($tab){
+        $isOver = true;
+        for($i=0;$i<10;$i++){
+            for($j=0;$j<10;$j++){
+                // Si la case contient un nombre impaire, la partie n'est pas terminée.
+                if($tab[$i][$j] % 2 === 1 && $tab[$i][$j] != 13){
+                    $isOver = false;
+                    break;
+                }
+            }
+            if(!$isOver){
+                break;
+            }
+        }
+        return $isOver;
     }
 }
 

@@ -22,7 +22,7 @@
                 <form class="col s12" method="POST">
                     <div class="row">
                         <div class="col s12">
-                            <h2>Joueur 1</h2>
+                            <h2><?php echo($player1->getPseudo()); ?></h2>
                         </div>
                     </div>
                     <div class="row">
@@ -30,10 +30,10 @@
                             <p>Porte-avion (5 cases)</p>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Début" type="text" class="validate" name="porte-avion-debut-j1" value="A8">
+                            <input placeholder="Début" type="text" class="validate" name="porte-avion-debut-j1" value="A1">
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Fin" type="text" class="validate" name="porte-avion-fin-j1" value="E8">
+                            <input placeholder="Fin" type="text" class="validate" name="porte-avion-fin-j1" value="A2">
                         </div>
                     </div>
                     <div class="row">
@@ -41,10 +41,10 @@
                             <p>Croiseur (4 cases)</p>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Début" type="text" class="validate" name="croiseur-debut-j1" value="C2">
+                            <input placeholder="Début" type="text" class="validate" name="croiseur-debut-j1" >
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Fin" type="text" class="validate" name="croiseur-fin-j1" value="C5">
+                            <input placeholder="Fin" type="text" class="validate" name="croiseur-fin-j1" >
                         </div>
                     </div>
                     <div class="row">
@@ -52,10 +52,10 @@
                             <p>Contre-torpilleurs (3 cases)</p>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Début" type="text" class="validate" name="contre-torpilleurs-debut-j1" value="H3">
+                            <input placeholder="Début" type="text" class="validate" name="contre-torpilleurs-debut-j1" >
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Fin" type="text" class="validate" name="contre-torpilleurs-fin-j1" value="J3">
+                            <input placeholder="Fin" type="text" class="validate" name="contre-torpilleurs-fin-j1" >
                         </div>
                     </div>
                     <div class="row">
@@ -63,10 +63,10 @@
                             <p>Sous-marin (3 cases)</p>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Début" type="text" class="validate" name="sous-marin-debut-j1" value="J5">
+                            <input placeholder="Début" type="text" class="validate" name="sous-marin-debut-j1" >
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Fin" type="text" class="validate" name="sous-marin-fin-j1" value="J7">
+                            <input placeholder="Fin" type="text" class="validate" name="sous-marin-fin-j1" >
                         </div>
                     </div>
                     <div class="row">
@@ -74,15 +74,15 @@
                             <p>Torpilleur (2 cases)</p>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Début" type="text" class="validate" name="torpilleur-debut-j1" value="I10">
+                            <input placeholder="Début" type="text" class="validate" name="torpilleur-debut-j1" >
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Fin" type="text" class="validate" name="torpilleur-fin-j1" value="J10">
+                            <input placeholder="Fin" type="text" class="validate" name="torpilleur-fin-j1" >
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <h2>Joueur 2</h2>
+                            <h2><?php echo($player2->getPseudo()); ?></h2>
                         </div>
                     </div>
                     <div class="row">

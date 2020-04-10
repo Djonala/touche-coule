@@ -1,6 +1,7 @@
 <?php
 use App\Controller\SetupController;
 use App\Controller\GameController;
+use App\Controller\EndController;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -17,5 +18,6 @@ if ($_SERVER['REQUEST_URI'] === '/') {
     $gameController = new GameController();
     $gameController->runGameJ2();
 } elseif ($_SERVER['REQUEST_URI'] === '/end'){
-    echo("c'est la fin");
+    $endController = new EndController();
+    $endController->endGame();
 }

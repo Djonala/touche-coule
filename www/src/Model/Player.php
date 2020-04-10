@@ -9,22 +9,26 @@ class Player
     private $id;
     private $pseudo;
     private $shoots;
+    private $scoreWin;
 
     /**
      * Player constructor.
      * @param $id
      * @param $pseudo
      * @param $shoots
+     * @param int $scoreWin
      */
     public function __construct(
         $id = null,
         $pseudo = null,
-        $shoots = null
+        $shoots = null,
+        $scoreWin= 0
     )
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
         $this->shoots = $shoots;
+        $this->scoreWin = $scoreWin;
     }
 
     /**
@@ -75,6 +79,22 @@ class Player
         $this->shoots[] = $shoots;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getScoreWin()
+    {
+        return $this->scoreWin;
+    }
+
+    /**
+     * @param mixed $scoreWin
+     */
+    public function setScoreWin($scoreWin): void
+    {
+        $this->scoreWin = $scoreWin;
+    }
+
     /** Transforme un object provenant de la BDD en Player
      * @param $object
      * @return Player
@@ -84,7 +104,8 @@ class Player
         return new self(
             (int)$object->id,
             $object->pseudo,
-            $shoots
+            $shoots,
+            $object->score_win
         );
     }
 

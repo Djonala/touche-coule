@@ -15,7 +15,7 @@
             <div class="nav-wrapper indigo darken-4">
                 <a href="/" class="brand-logo">Touché, Coulé</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="end.html">Fin</a></li>
+                    <li><a href="end.php">Fin</a></li>
                 </ul>
             </div>
         </nav>
@@ -46,11 +46,25 @@
                     <div>H</div>
                     <div>I</div>
                     <div>J</div>
-                    <?php for($i=0;$i<10;$i++){
+                    <?php
+                    for($i=0;$i<10;$i++){
                         $ligne = $i+1;
                         echo "<div>$ligne</div>";
                         for($j=0;$j<10;$j++){
-                            echo'<div></div>';
+                            switch ($plateauJ1[$i][$j]){
+                                case 0: echo("<div></div>");
+                                    break;
+                                case 4:
+                                case 6:
+                                case 8:
+                                case 10:
+                                case 12:
+                                case 2: echo "<div>&#128165;</div>";
+                                    break;
+                                case 13: echo("<div>&#128167;</div>");
+                                    break;
+                                default : echo"<div></div>";
+                            }
                         }
                     }
                     ?>

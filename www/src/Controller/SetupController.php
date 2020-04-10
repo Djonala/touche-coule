@@ -54,6 +54,11 @@ class SetupController extends AbstractController
             $gameManager = new GameManager(ConnexionBDD::getInstance());
             $idGame = $session->getIdGameFromSession();
             $game = $gameManager->findById($idGame);
+
+            // on recupère les joueurs grace aux id contenu dans le game
+            $joueurManager = new PlayerManager(ConnexionBDD::getInstance());
+            $player1 = $joueurManager->findPlayerById($game->getIdPlayer1());
+            $player2 = $joueurManager->findPlayerById($game->getIdPlayer2());
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -61,6 +66,6 @@ class SetupController extends AbstractController
             $game->AddShipsForPlayer2();
             $this->redirect302('/gameJ1');
         }
-        require(__DIR__ .'/../View/setup.html');
+        require(__DIR__ . '/../View/setup.php');
     }
 }
