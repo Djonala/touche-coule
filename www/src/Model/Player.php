@@ -9,26 +9,26 @@ class Player
     private $id;
     private $pseudo;
     private $shoots;
-    private $scoreWin;
+    private $ships;
 
     /**
      * Player constructor.
      * @param $id
      * @param $pseudo
      * @param $shoots
-     * @param int $scoreWin
+     * @param null $ships
      */
     public function __construct(
         $id = null,
         $pseudo = null,
         $shoots = null,
-        $scoreWin= 0
+        $ships=null
     )
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
         $this->shoots = $shoots;
-        $this->scoreWin = $scoreWin;
+        $this->ships = $ships;
     }
 
     /**
@@ -80,20 +80,23 @@ class Player
     }
 
     /**
-     * @return mixed
+     * @return null
      */
-    public function getScoreWin()
+    public function getShips()
     {
-        return $this->scoreWin;
+        return $this->ships;
     }
 
     /**
-     * @param mixed $scoreWin
+     * @param null $ships
      */
-    public function setScoreWin($scoreWin): void
+    public function setShips($ships): void
     {
-        $this->scoreWin = $scoreWin;
+        $this->ships = $ships;
     }
+
+
+
 
     /** Transforme un object provenant de la BDD en Player
      * @param $object
@@ -101,11 +104,12 @@ class Player
      */
     public static function toPlayerFromDB($object){
         $shoots = unserialize($object->shoots);
+        $ships = unserialize($object->ships);
         return new self(
             (int)$object->id,
             $object->pseudo,
             $shoots,
-            $object->score_win
+            $ships
         );
     }
 

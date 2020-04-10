@@ -77,41 +77,36 @@ private $id_player2;
         );
     }
 
-    public function AddShipsForPlayer1(){
+    public function AddShipsForPlayer1(Player $player1){
         //instantation d'un managerShip pour enregistrer les bateaux en db
-        $managerShip = new ShipManager(ConnexionBDD::getInstance());
+        $managerPlayer= new PlayerManager(ConnexionBDD::getInstance());
 
         // Creation de tous les bateau du joueur 1
-        $ship1J1 = new Ship(null, $_POST['porte-avion-debut-j1'].",".$_POST['porte-avion-fin-j1'],[1,1,1,1,1],2,$this->getIdPlayer1());
-        $ship2J1 = new Ship(null, $_POST['croiseur-debut-j1'].",".$_POST['croiseur-fin-j1'],[1,1,1,1],2,$this->getIdPlayer1());
-        $ship3J1 = new Ship(null, $_POST['contre-torpilleurs-debut-j1'].",".$_POST['contre-torpilleurs-fin-j1'],[1,1,1],2,$this->getIdPlayer1());
-        $ship4J1 = new Ship(null, $_POST['sous-marin-debut-j1'].",".$_POST['sous-marin-fin-j1'],[1,1,1],2,$this->getIdPlayer1());
-        $ship5J1 = new Ship(null, $_POST['torpilleur-debut-j1'].",".$_POST['torpilleur-fin-j1'],[1,1],2,$this->getIdPlayer1());
-        // enregistrement de tous les bateaux en DB
-                $managerShip->create($ship1J1);
-                $managerShip->create($ship2J1);
-                $managerShip->create($ship3J1);
-                $managerShip->create($ship4J1);
-                $managerShip->create($ship5J1);
+       $player1->setShips([
+           $_POST['porte-avion-debut-j1'].",".$_POST['porte-avion-fin-j1'],
+            $_POST['croiseur-debut-j1'].",".$_POST['croiseur-fin-j1'],
+            $_POST['contre-torpilleurs-debut-j1'].",".$_POST['contre-torpilleurs-fin-j1'],
+            $_POST['sous-marin-debut-j1'].",".$_POST['sous-marin-fin-j1'],
+            $_POST['torpilleur-debut-j1'].",".$_POST['torpilleur-fin-j1']
+       ]);
+        // Mise à jour du joueur en DB
+        $managerPlayer->update($player1);
     }
 
-    public function AddShipsForPlayer2(){
+    public function AddShipsForPlayer2(Player $player2){
         //instantation d'un managerShip pour enregistrer les bateaux en db
-        $managerShip = new ShipManager(ConnexionBDD::getInstance());
+        $managerPlayer= new PlayerManager(ConnexionBDD::getInstance());
 
-        //Creation de tous les bateau du joueur 2
-        $ship1J2 = new Ship(null, $_POST['porte-avion-debut-j2'].",".$_POST['porte-avion-fin-j2'],[1,1,1,1,1],2,$this->getIdPlayer2());
-        $ship2J2 = new Ship(null, $_POST['croiseur-debut-j2'].",".$_POST['croiseur-fin-j2'],[1,1,1,1],2,$this->getIdPlayer2());
-        $ship3J2 = new Ship(null, $_POST['contre-torpilleurs-debut-j2'].",".$_POST['contre-torpilleurs-fin-j2'],[1,1,1],2,$this->getIdPlayer2());
-        $ship4J2 = new Ship(null, $_POST['sous-marin-debut-j2'].",".$_POST['sous-marin-fin-j2'],[1,1,1],2,$this->getIdPlayer2());
-        $ship5J2 = new Ship(null, $_POST['torpilleur-debut-j2'].",".$_POST['torpilleur-fin-j2'],[1,1],2,$this->getIdPlayer2());
-
-        // enregistrement de tous les bateaux en DB
-        $managerShip->create($ship1J2);
-        $managerShip->create($ship2J2);
-        $managerShip->create($ship3J2);
-        $managerShip->create($ship4J2);
-        $managerShip->create($ship5J2);
+        // Creation de tous les bateau du joueur 2
+        $player2->setShips([
+            $_POST['porte-avion-debut-j2'].",".$_POST['porte-avion-fin-j2'],
+            $_POST['croiseur-debut-j2'].",".$_POST['croiseur-fin-j2'],
+            $_POST['contre-torpilleurs-debut-j2'].",".$_POST['contre-torpilleurs-fin-j2'],
+            $_POST['sous-marin-debut-j2'].",".$_POST['sous-marin-fin-j2'],
+            $_POST['torpilleur-debut-j2'].",".$_POST['torpilleur-fin-j2']
+        ]);
+        // Mise à jour du joueur en DB
+        $managerPlayer->update($player2);
     }
 
 

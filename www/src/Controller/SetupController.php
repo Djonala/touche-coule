@@ -62,8 +62,8 @@ class SetupController extends AbstractController
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $game->AddShipsForPlayer1();
-            $game->AddShipsForPlayer2();
+            $game->AddShipsForPlayer1($player1);
+            $game->AddShipsForPlayer2($player2);
             $this->redirect302('/gameJ1');
         }
         require(__DIR__ . '/../View/setup.php');

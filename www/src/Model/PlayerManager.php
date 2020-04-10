@@ -43,11 +43,11 @@ class PlayerManager
         $this->connexion->connect();
         $shoots = $player->getShoots();
         $pseudo = $player->getPseudo();
-        $scoreWin = $player->getScoreWin();
+        $ships = serialize($player->getShips());
         $result = pg_query_params(
             $this->connexion->getConnexion(),
-            'INSERT INTO player (pseudo, shoots, score_win) VALUES ($1, $2, $3) RETURNING * ',
-            array($pseudo, $shoots, $scoreWin)
+            'INSERT INTO player (pseudo, shoots, ships) VALUES ($1, $2, $3) RETURNING * ',
+            array($pseudo, $shoots, $ships)
         );
         $players = null;
         while ($data = pg_fetch_object($result)) {
@@ -66,11 +66,11 @@ class PlayerManager
         $shoots = serialize($player->getShoots());
         $pseudo = $player->getPseudo();
         $id = $player->getId();
-        $scoreWin = $player->getScoreWin();
+        $ships = serialize($player->getShips());
         $result = pg_query_params(
             $this->connexion->getConnexion(),
-            'UPDATE player SET pseudo=$1, shoots=$2, score_win=$3 WHERE id=$4 RETURNING * ',
-            array($pseudo, $shoots, $scoreWin,$id)
+            'UPDATE player SET pseudo=$1, shoots=$2, ships=$3 WHERE id=$4 RETURNING * ',
+            array($pseudo, $shoots, $ships ,$id)
         );
         $players = null;
         while ($data = pg_fetch_object($result)) {
