@@ -5,9 +5,31 @@
 
 namespace App\Model;
 
-
+/**
+ * Class GameViewService
+ * @package App\Model
+ * @note
+ * Reference du tableau pour affichage dans la vue :
+ * 0 = Rien
+ * 1 = class g2d-d (bateau horizontal debut)
+ * 2 = class g2d-d + tir valide (bateau hozitontal debut + touché)
+ * 3 = class g2d-f (fin du bateau horizontal)
+ * 4 = class g2d-f + tir (bateau horizontal fin + touché)
+ * 5 = class g2d-m (bateau horizontal milieu)
+ * 6 = class g2d-m + tir (bateau horizontal milieu + touché)
+ * 7 = class t2d-d (bateau vertical debut)
+ * 8 = class t2d-d + tir valide (bateau vertical debut + touché)
+ * 9 = class t2d-f (fin du bateau vertical)
+ * 10 = class t2d-f + tir (bateau vertical fin + touché)
+ * 11 = class t2d-m (bateau vertical milieu)
+ * 12 = class t2d-m + tir (bateau vertical milieu + touché)
+ * 13 = A l'eau
+ */
 class GameViewService
 {
+    /**Tableau simplifiant la conversion lettre en nombre.
+     * @var array
+     */
     private $alphabet = array(
         'A' => 0,
         'B' => 1,
@@ -32,7 +54,7 @@ class GameViewService
         $ships = $player->getShips();
         $tab = array();
 
-        // on initialisation un tableau avec la valeur 0
+        // on initialise un tableau avec la valeur 0
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 $tab[$i][$j] = 0;
@@ -45,6 +67,7 @@ class GameViewService
             $coorArray = preg_split("/,/", $ship);
 
             //Recupère la lettre sous forme de chiffre ou on recupère le chiffre
+
             $x1 = $this->alphabet[substr($coorArray[0], 0, 1)];
             $y1 = (int)substr($coorArray[0], 1) - 1; // je retire 1 car mon tableau débute à 0
             $x2 = $this->alphabet[substr($coorArray[1], 0, 1)];
@@ -97,9 +120,11 @@ class GameViewService
         // On ajoute les tirs du joueur adversaire
         $shoots = $playerAdversaire->getShoots();
         if(isset($shoots)) {
+
             //on boucle sur tous les tirs de l'adversaire
             foreach ($shoots as $shoot) {
                 if($shoot!=null){
+
                     //Recupère la lettre sous forme de chiffre ou on recupère le chiffre
                     $x1 = $this->alphabet[substr($shoot, 0, 1)];
                     $y1 = (int)substr($shoot, 1) - 1; // je retire 1 car mon tableau débute à 0
@@ -131,7 +156,7 @@ class GameViewService
 
     }
 
-    /** Function qui indique si oui ou non le jeu est terminée, en fonction du tableau à jour et personnalisé
+    /** Function qui indique si oui ou non le jeu est terminé, en fonction d'un tableau à jour et personnalisé
      * de l'adversaire.
      * @param $tab
      * @return bool
@@ -156,8 +181,5 @@ class GameViewService
         return $isOver;
     }
 
-    private function addShoot($tab, $shoots){
-
-    }
 }
 

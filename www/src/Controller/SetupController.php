@@ -50,20 +50,25 @@ class SetupController extends AbstractController
         // on recupere la session
         session_start();
         $session = new Session();
-        if(isset($_SESSION['idGame'])) {
-            $gameManager = new GameManager(ConnexionBDD::getInstance());
-            $idGame = $session->getIdGameFromSession();
-            $game = $gameManager->findById($idGame);
 
-            // on recupère les joueurs grace aux id contenu dans le game
-            $joueurManager = new PlayerManager(ConnexionBDD::getInstance());
-            $player1 = $joueurManager->findPlayerById($game->getIdPlayer1());
-            $player2 = $joueurManager->findPlayerById($game->getIdPlayer2());
-        }
+        //On instancie un GameManage et récupère le jeu en BDD grace à l'id contenu dans la session
+        $gameManager = new GameManager(ConnexionBDD::getInstance());
+        $idGame = $session->getIdGameFromSession();
+        $game = $gameManager->findById($idGame);
 
+        // on recupère les joueurs grace aux id contenu dans le game
+        $joueurManager = new PlayerManager(ConnexionBDD::getInstance());
+        $player1 = $joueurManager->findPlayerById($game->getIdPlayer1());
+        $player2 = $joueurManager->findPlayerById($game->getIdPlayer2());
+
+
+        // si une requête post est envoyée
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // on ajoute les bateaux au joueur correspondant
             $game->AddShipsForPlayer1($player1);
             $game->AddShipsForPlayer2($player2);
+
+            //on redirige vers la page de jeu
             $this->redirect302('/gameJ1');
         }
         require(__DIR__ . '/../View/setup.php');

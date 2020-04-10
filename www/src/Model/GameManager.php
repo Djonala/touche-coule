@@ -57,7 +57,7 @@ class GameManager
         );
         $game = null;
         while ($data = pg_fetch_object($result)) {
-            // transformation de l'objet récupéré en objet de type Game
+            // transformation de l'objet récupéré, en objet de type Game
             $game = Game::toGameFromDB($data);
         }
         pg_free_result($result);

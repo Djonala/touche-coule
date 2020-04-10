@@ -13,7 +13,7 @@ use App\Security\Session;
 class EndController extends AbstractController
 {
     function endGame(){
-    // on recupere la session
+        // on recupere la session
         session_start();
         $session = new Session();
 
@@ -31,6 +31,8 @@ class EndController extends AbstractController
         $gameService = new GameViewService();
         $plateauJ1 = $gameService->generateBoardgame($player1,$player2);
         $plateauJ2 = $gameService->generateBoardgame($player2,$player1);
+
+        // on detruit la session
         $session->logout();
 
 

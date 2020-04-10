@@ -50,11 +50,13 @@
                     <div>I</div>
                     <div>J</div>
             <?php
-
+                // Double boucle pour affichage du plateau
                 for($i=0;$i<10;$i++){
+                    //affichage des numero de ligne à chaque itération de $i
                     $ligne = $i+1;
                     echo "<div>$ligne</div>";
                     for($j=0;$j<10;$j++){
+                        //affichage de la div correspondante au numéro contenu dans le tableau (cf: Model/GameViewService.php)
                         switch ($plateauJ1[$i][$j]){
                                 case 0: echo("<div></div>");
                                     break;
@@ -104,10 +106,16 @@
                         <div>J</div>
 
                         <?php
+                        // Double boucle pour affichage du plateau
                         for($i=0;$i<10;$i++){
+
+                            //affichage des numero de ligne à chaque itération de $i
                             $ligne = $i+1;
                             echo "<div>$ligne</div>";
+
                             for($j=0;$j<10;$j++){
+                                /*affichage de la div correspondante au numéro contenu dans le tableau (cf: Model/GameViewService.php)
+                                 cette fois-ci sans afficher les bateaux ! */
                                 switch ($plateauJ2[$i][$j]){
                                     case 0: echo("<div></div>");
                                         break;

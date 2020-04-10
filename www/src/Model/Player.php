@@ -103,8 +103,11 @@ class Player
      * @return Player
      */
     public static function toPlayerFromDB($object){
+        // j'unserialize les tableaux enregistrés en DB
         $shoots = unserialize($object->shoots);
         $ships = unserialize($object->ships);
+
+        // Je créer un objet de type Player avec les élements reçu en paramètre
         return new self(
             (int)$object->id,
             $object->pseudo,

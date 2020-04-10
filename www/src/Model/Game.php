@@ -33,9 +33,7 @@ private $id_player2;
         return $this->id;
     }
 
-    /**
-     *
-     */
+
     public function getIdPlayer1()
     {
         return $this->id_player1;
@@ -49,9 +47,7 @@ private $id_player2;
         $this->id_player1 = $id_player1;
     }
 
-    /**
-     *
-     */
+
     public function getIdPlayer2()
     {
         return $this->id_player2;
@@ -65,6 +61,8 @@ private $id_player2;
         $this->id_player2 = $id_player2;
     }
 
+
+
     /** Transforme un object provenant de la BDD en Game
      * @param $object
      * @return Game
@@ -77,6 +75,11 @@ private $id_player2;
         );
     }
 
+
+
+    /** Ajoute les bateau au tableau de bateau du joueur 1
+     * @param Player $player1
+     */
     public function AddShipsForPlayer1(Player $player1){
         //instantation d'un managerShip pour enregistrer les bateaux en db
         $managerPlayer= new PlayerManager(ConnexionBDD::getInstance());
@@ -93,6 +96,11 @@ private $id_player2;
         $managerPlayer->update($player1);
     }
 
+
+
+    /** Ajoute les bateau au tableau de bateau du joueur 2
+     * @param Player $player2
+     */
     public function AddShipsForPlayer2(Player $player2){
         //instantation d'un managerShip pour enregistrer les bateaux en db
         $managerPlayer= new PlayerManager(ConnexionBDD::getInstance());
